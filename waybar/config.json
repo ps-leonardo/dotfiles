@@ -1,0 +1,97 @@
+{
+  "position": "bottom",
+  "margin-top": 0,
+  "margin-bottom": 0,
+  "margin-left": 0,
+  "margin-right": 0,
+  "layer": "top",
+  "height": 16,
+  "spacing": 0,
+  "modules-left": [
+    "wlr/taskbar",
+    "hyprland/window",
+    "custom/spotify"
+  ],
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
+  "modules-right": [
+    "pulseaudio",
+    "bluetooth",
+    "group/hardware",
+    "network",
+    "tray",
+    "clock",
+    "custom/exit"
+  ],
+  "group/hardware": {
+    "orientation": "horizontal",
+    "modules": [
+      "disk",
+      "cpu",
+      "memory",
+      "temperature"
+    ]
+  },
+  "tray": {
+    "icon-size": 20,
+    "show-passive-items": true,
+    "spacing": 5
+  },
+  "clock": {
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format-alt": "{:%Y-%m-%d}"
+  },
+  "cpu": {
+    "format": " {usage}%"
+  },
+  "memory": {
+    "format": " {}%"
+  },
+  "disk": {
+    "interval": 30,
+    "format": " {percentage_used}%",
+    "path": "/"
+  },
+  "network": {
+    "format": "{icon}",
+    "format-wifi": "",
+    "format-ethernet": "",
+    "format-disconnected": "Disconnected ⚠",
+    "format-alt": "{ifname}: {ipaddr}/{cidr}"
+  },
+  "custom/exit": {
+    "format": "",
+    "on-click": "wlogout",
+    "tooltip": false
+  },
+  "pulseaudio": {
+    "format": " {volume}%",
+    "format-muted": "",
+    "scroll-step": 1.0,
+    "on-click": "pavucontrol",
+    "on-click-middle": "/home/leonardo/.config/waybar/scripts/mute_unute.sh"
+  },
+  "temperature": {
+    "critical-threshold": 80,
+    "format": "{icon} {temperatureC}°C ",
+    "format-icons": [
+      "",
+      "",
+      ""
+    ]
+  },
+  "custom/spotify": {
+    "exec": "/usr/bin/python3 ~/.config/waybar/scripts/mediaplayer.py --player spotify",
+    "format": " {}",
+    "return-type": "json",
+    "on-click": "playerctl play-pause --player spotify",
+    "on-click-right": "playerctl next --player spotify",
+    "on-click-middle": "playerctl previous --player spotify",
+    "max-length": 25,
+    "escape": true
+  },
+  "wlr/taskbar": {
+    "active-first": true
+  }
+}
